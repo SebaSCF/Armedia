@@ -2,13 +2,6 @@
     <div class="text-center ">
     <img class="rounded-circle"src="https://yt3.ggpht.com/ytc/AAUvwngLdkBplMWQKkXTo9fU3tzIxWBIn7uZKHfl_n-udQ=s900-c-k-c0x00ffffff-no-rj" width="20%" />
     </div>
-    <div class="text-center">
-
-      {{
-        registration.value | json
-
-    }}
-    </div>
 
     <form #registration="ngForm" (ngSubmit)="onSubmit(registration.value)" class="Form pt-3">
 
