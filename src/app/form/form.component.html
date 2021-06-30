@@ -1,0 +1,92 @@
+<div  class="container pt-5">
+    <div class="text-center ">
+    <img class="rounded-circle"src="https://yt3.ggpht.com/ytc/AAUvwngLdkBplMWQKkXTo9fU3tzIxWBIn7uZKHfl_n-udQ=s900-c-k-c0x00ffffff-no-rj" width="20%" />
+    </div>
+    <div class="text-center">
+
+      {{
+        registration.value | json
+
+    }}
+    </div>
+
+    <form #registration="ngForm" (ngSubmit)="onSubmit(registration.value)" class="Form pt-3">
+
+    <div class="input-group p-2">
+      <input
+       ngModel
+       #email="ngModel"
+       name="email"
+       class="form-control"
+       type="email"
+       placeholder="Email Address"
+       required>
+    </div>
+    <div class="input-group">
+    <span *ngIf="email.errors && (email.dirty || email.touched) && email.invalid" class="alert alert-danger p-1 m-0 w-100" >Email must be entered</span>
+    </div>
+
+    <div class="input-group p-2">
+      <select class="form-control" #Subscriptions="ngModel" ngModel name="Subscriptions" id="Subscriptions" required>
+        <option value selected>Please Choose an option</option>
+        <option >Basic</option>
+        <option>Advanced</option>
+        <option>Pro</option>
+      </select>
+    </div>
+    <div class="input-group">
+      <span *ngIf="Subscriptions.errors && (Subscriptions.dirty || Subscriptions.touched) && Subscriptions.invalid" class="alert alert-danger p-1 m-0 w-100" >Subscriptions must be entered</span>
+      </div>
+
+
+    <div class="input-group p-2">
+      <input #password="ngModel" ngModel  ng-pattern="/^(?=.*[A-Za-z])(?=.*\d)(?=.*[$@$!%*#?&])[A-Za-z\d$@$!%*#?&]{8,}$/" class="form-control" type="password" name="password" placeholder="Password" minlength="8" required>
+    </div>
+    <div class="input-group p-2" *ngIf="password.errors && (password.dirty || password.touched) && password.invalid">
+      <div class="alert alert-danger p-1 m-0 w-100" ng-message="pattern">Password should be at least 8 characters long
+        and should contain one number, one character and one special
+        character.
+      </div>
+        <span *ngIf="password.errors.required" class="alert alert-danger p-1 m-0 w-100" >Password must be entered</span>
+        <span *ngIf="password.errors.minlength" class="alert alert-danger p-1 m-0 w-100" >Password must have more than 8 characters!</span>
+    </div>
+
+
+    <div class="input-group p-2">
+      <input #cpassword="ngModel" ngModel  class="form-control" type="password" name="cpassword" placeholder="Re-Enter Password" minlength="8" ng-pattern="password" required>
+    </div>
+    <span class="alert alert-danger p-1 m-0 w-100">{{ matchingPassword(password, cpassword, registration)}}</span>
+
+    <div class="input-group p-2" *ngIf="cpassword.errors && (cpassword.dirty || cpassword.touched) && password.invalid">
+
+      <span *ngIf="cpassword.errors.required" class="alert alert-danger p-1 m-0 w-100" >Password must be entered</span>
+    </div>
+
+    <div class="input-group d-flex flex-row justify-content-center p-2">
+    <button class="btn row w-50 btn-primary" [disabled]="registration.invalid" onclick="refresh()" type="submit">Submit</button>
+    <button class="btn row w-50 btn-danger" value="reset" onclick="resetWarning()" type="reset">Clear</button>
+    </div>
+    </form>
+
+
+
+
+
+<table class="table table-striped">
+  <thead>
+      <tr>
+        <th>ID</th>
+        <th>Email</th>
+        <th>Subscription Type</th>
+      </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let user of users">
+      <td>{{user.id + 1}}</td>
+      <td>{{user.email}}</td>
+      <td>{{user.Subscriptions}}</td>
+    </tr>
+  </tbody>
+</table>
+
+    </div>

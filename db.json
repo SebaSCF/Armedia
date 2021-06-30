@@ -1,0 +1,28 @@
+{
+  "users": [
+    {
+      "id": 0,
+      "email": "test@hotmail.com",
+      "Subscriptions": "Advanced",
+      "password": "12345678"
+    },
+    {
+      "email": "sebastiandavid92@hotmail.com",
+      "Subscriptions": "Basic",
+      "password": "123pelota",
+      "id": 1
+    },
+    {
+      "email": "sebastiandavid92@hotmail.com",
+      "Subscriptions": "Basic",
+      "password": "123pelota",
+      "id": 2
+    },
+    {
+      "email": "123123123",
+      "Subscriptions": "Basic",
+      "password": "32132132131231",
+      "id": 3
+    }
+  ]
+}
